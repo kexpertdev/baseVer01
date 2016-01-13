@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C300ACA2-D8D9-48FC-BCE9-47C461FDB95C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="KexpertContext.cs" />
+    <Compile Include="Migrations\201512261529010_InitialCreate.cs" />
+    <Compile Include="Migrations\201512261529010_InitialCreate.Designer.cs">
+      <DependentUpon>201512261529010_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512261803225_smallmodif.cs" />
+    <Compile Include="Migrations\201512261803225_smallmodif.Designer.cs">
+      <DependentUpon>201512261803225_smallmodif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512262247351_pictures.cs" />
+    <Compile Include="Migrations\201512262247351_pictures.Designer.cs">
+      <DependentUpon>201512262247351_pictures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512262250551_pictures2.cs" />
+    <Compile Include="Migrations\201512262250551_pictures2.Designer.cs">
+      <DependentUpon>201512262250551_pictures2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512282318237_pictures3.cs" />
+    <Compile Include="Migrations\201512282318237_pictures3.Designer.cs">
+      <DependentUpon>201512282318237_pictures3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601031924144_smallmodif2.cs" />
+    <Compile Include="Migrations\201601031924144_smallmodif2.Designer.cs">
+      <DependentUpon>201601031924144_smallmodif2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601042151147_removeTablePlurals.cs" />
+    <Compile Include="Migrations\201601042151147_removeTablePlurals.Designer.cs">
+      <DependentUpon>201601042151147_removeTablePlurals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601052206332_addins.cs" />
+    <Compile Include="Migrations\201601052206332_addins.Designer.cs">
+      <DependentUpon>201601052206332_addins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AttachmentType.cs" />
+    <Compile Include="Models\Broker.cs" />
+    <Compile Include="Models\Claim.cs" />
+    <Compile Include="Models\ClaimRemarkLog.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ModificationReason.cs" />
+    <Compile Include="Models\PolicyInstallment.cs" />
+    <Compile Include="Models\LegalPerson.cs" />
+    <Compile Include="Models\PaymentType.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PolicyRemarkLog.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\Policy.cs" />
+    <Compile Include="Models\PolicyCancellationReason.cs" />
+    <Compile Include="Models\PolicyPeriod.cs" />
+    <Compile Include="Models\PolicyQuote.cs" />
+    <Compile Include="Models\PolicyStatus.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\RemarkType.cs" />
+    <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\AppUserRole.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512261529010_InitialCreate.resx">
+      <DependentUpon>201512261529010_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512261803225_smallmodif.resx">
+      <DependentUpon>201512261803225_smallmodif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512262247351_pictures.resx">
+      <DependentUpon>201512262247351_pictures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512262250551_pictures2.resx">
+      <DependentUpon>201512262250551_pictures2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512282318237_pictures3.resx">
+      <DependentUpon>201512282318237_pictures3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601031924144_smallmodif2.resx">
+      <DependentUpon>201601031924144_smallmodif2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601042151147_removeTablePlurals.resx">
+      <DependentUpon>201601042151147_removeTablePlurals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601052206332_addins.resx">
+      <DependentUpon>201601052206332_addins.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

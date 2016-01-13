@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DataLayer.Models.Policy>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsuranceCompany)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsurancePolicyNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CancelledAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CancelledFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsLimitedTerm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedReason)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsuranceCompany)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsurancePolicyNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CancelledAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CancelledFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsLimitedTerm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedReason)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
