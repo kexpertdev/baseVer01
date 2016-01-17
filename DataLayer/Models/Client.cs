@@ -13,20 +13,31 @@ namespace DataLayer.Models
     {
         [Key]
         public long ID { get; set; }
-        [MaxLength(10), MinLength(10)]
-        ///the first policy number
+
+
+        ///the first policy number??
+        [Display(Name = "Client code"), Required, MaxLength(10), MinLength(10)]
         public string ClientCode { get; set; }
+        [Display(Name = "Is legal person"), Required]
         public bool IsLegalPerson { get; set; }
+        [Display(Name = "Email address"), DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Display(Name = "Phone number"), DataType(DataType.PhoneNumber), DisplayFormat(DataFormatString = "{0:(###) ##-#######}")]
         public string PhoneNumber { get; set; }
 
 
-        public Person Person { get; set; }
-        public LegalPerson LegalPerson { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual LegalPerson LegalPerson { get; set; }
 
 
+        [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedDate { get; set; }
-       
+        [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTimeOffset? ModifiedDate { get; set; }
+        [Display(Name = "Modified reason")]
+        public string ModifiedReason { get; set; }
+        public virtual AppUser ModifiedBy { get; set; }
+
 
         public override string ToString()
         {

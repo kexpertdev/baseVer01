@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    [Table("PaymentType")]
-    public class PaymentType
+    [Table("Person")]
+    public class PolicyOnlinePayment
     {
         [Key]
         public int ID { get; set; }
-
-
-        public string Name { get; set; }
     }
 }

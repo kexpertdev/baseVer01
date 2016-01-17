@@ -15,7 +15,13 @@ namespace DataLayer.Models
         public int ID { get; set; }
 
 
+        [Required, StringLength(50, MinimumLength=4)]
         public string Name { get; set; }
+        [StringLength(255)]
         public string Description { get; set; }
+
+
+        [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTimeOffset CreatedDate { get; set; }
     }
 }

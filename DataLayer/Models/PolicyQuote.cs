@@ -14,10 +14,11 @@ namespace DataLayer.Models
         [Key]
         public int ID { get; set; }
 
-
+        [Required]
         public string Uid { get; set; }
 
 
+        [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedDate { get; set; }
     }
 }

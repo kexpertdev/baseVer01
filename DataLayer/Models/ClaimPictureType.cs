@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    [Table("RemarkType")]
-    public class RemarkType
+    [Table("ClaimPictureType")]
+    public class ClaimPictureType
     {
         [Key]
         public int ID { get; set; }
+
+        [Display(Name = "Type name"), Required, StringLength(100)]
         public string Name { get; set; }
     }
 }

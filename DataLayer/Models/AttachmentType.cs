@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    [Table("AttachmentType")]
-    public class AttachmentType
-    {
-        [Key]
-        public int ID { get; set; }
+    //[Table("AttachmentType")]
+    //public class AttachmentType
+    //{
+    //    [Key]
+    //    public int ID { get; set; }
 
-
-        public string Name { get; set; }
-        public string AllowedExt { get; set; }
-        public string Description { get; set; }
-    }
+    //    [Required, StringLength(50, MinimumLength = 4)]
+    //    public string Name { get; set; }
+    //    public string? AllowedExt { get; set; }
+    //    public string? Description { get; set; }
+    //}
 }

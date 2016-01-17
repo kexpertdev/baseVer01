@@ -15,10 +15,13 @@ namespace DataLayer.Models
         public int ID { get; set; }
 
 
-        [MaxLength(4), MinLength(4)]
+        [Display(Name = "Postal code"), Required, MaxLength(4), MinLength(4)]
         public string PostalCode { get; set; }
+        [Display(Name = "City"), Required, StringLength(100)]
         public string City { get; set; }
+         [Display(Name = "Street name"), Required, StringLength(100)]
         public string StreetName { get; set; }
+         [Display(Name = "Street number"), Required, StringLength(25)]
         public string StreetNumber { get; set; }
 
 

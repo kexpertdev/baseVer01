@@ -15,12 +15,14 @@ namespace DataLayer.Models
         public int ID { get; set; }
 
 
+        [Display(Name = "Name"), Required, StringLength(100)]
         public string Name { get; set; }
+        [Display(Name = "Tax number"), Required, DisplayFormat(DataFormatString = "{0:########-#-###}")]
         public string TaxNumber{ get; set; }
 
 
-        public Address Address { get; set; }
-        public Address MailingAddress { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Address MailingAddress { get; set; }
 
 
         public override string ToString()

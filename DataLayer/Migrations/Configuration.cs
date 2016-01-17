@@ -10,7 +10,6 @@ namespace DataLayer.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DataLayer.KExpertContext";
         }
 
         protected override void Seed(DataLayer.KExpertContext context)

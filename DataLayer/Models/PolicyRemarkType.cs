@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    [Table("ModificationReason")]
-    public class ModificationReason
+    [Table("PolicyRemarkType")]
+    public class PolicyRemarkType
     {
         [Key]
         public int ID { get; set; }
+
+        [Display(Name = "Name"), Required, StringLength(100)]
         public string Name { get; set; }
-        public string Type { get; set; }
     }
 }

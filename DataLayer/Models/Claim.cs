@@ -15,25 +15,36 @@ namespace DataLayer.Models
         [Key]
         public int ID { get; set; }
 
-
+        [Display(Name = "Claim number"), Required, StringLength(10, MinimumLength = 10)]
         public string ClaimNumber { get; set; }
+        [Display(Name = "Notification date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset NotificationDate { get; set;}
+        [Display(Name = "Accident date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset AccidentDate { get; set; }
+        [Display(Name = "Geography location")]
         public DbGeography Location { get; set; }
+        [Display(Name = "Latitude")]
         public float Latitude { get; set; }
+        [Display(Name = "Longitude")]
         public float Longitude { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
 
+        //public virtual ClaimContactPerson ClaimantA { get; set; }
+        //public virtual ClaimContactPerson ClaimantB { get; set; }
         public virtual PolicyPeriod PolicyPeriod { get; set; }
-        public virtual ICollection<Attachment> Attachments { get; set; }
+        public virtual ICollection<ClaimPicture> ClaimPictures { get; set; }
+        public virtual ICollection<ClaimContactPerson> Claimants { get; set; }
 
 
+        [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedDate { get; set; }
-        public DateTimeOffset LastModifiedDate { get; set; }
-        public string LastModifiedReason { get; set; }
+        [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTimeOffset? ModifiedDate { get; set; }
+        [Display(Name = "Modified reason")]
+        public string ModifiedReason { get; set; }
+        public virtual AppUser ModifiedBy { get; set; }
 
 
         public override string ToString()
