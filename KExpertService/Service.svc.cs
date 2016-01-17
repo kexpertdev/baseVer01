@@ -19,6 +19,11 @@ namespace KExpertService
             return "Hello World from KexpertWS";
         }
 
+        public string GetServertime() 
+        {
+            return DateTime.Now.ToString();
+        }
+
         public async Task<string> GetStringAsync(string message)
         {
             return await Task.Factory.StartNew(() => MyMethod(message));
@@ -26,21 +31,31 @@ namespace KExpertService
 
         private string MyMethod(string message)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(10);
             return message;
         }
 
-        //public CompositeType GetDataUsingDataContract(CompositeType composite)
-        //{
-        //    if (composite == null)
-        //    {
-        //        throw new ArgumentNullException("composite");
-        //    }
-        //    if (composite.BoolValue)
-        //    {
-        //        composite.StringValue += "Suffix";
-        //    }
-        //    return composite;
-        //}
+        public Person[] GetPeople()
+        {
+            return new[]
+                    {
+                        new Person { Age = 45, FirstName = "John", LastName = "Smith" }, 
+                        new Person { Age = 42, FirstName = "Jane", LastName = "Smith" }
+                    };
+        }
+        
+    }
+
+    [DataContract]
+    public class Person
+    {
+        [DataMember]
+        public int Age { get; set; }
+
+        [DataMember]
+        public string FirstName { get; set; }
+
+        [DataMember]
+        public string LastName { get; set; }
     }
 }

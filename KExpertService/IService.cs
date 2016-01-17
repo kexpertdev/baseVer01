@@ -18,6 +18,12 @@ namespace KExpertService
         string HelloWorld();
 
         [OperationContract]
+        string GetServertime();
+
+        [OperationContract]
+        Person[] GetPeople();
+
+        [OperationContract]
         Task<string> GetStringAsync(string message);
 
         //[OperationContract]
