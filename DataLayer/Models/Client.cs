@@ -20,9 +20,9 @@ namespace DataLayer.Models
         public string ClientCode { get; set; }
         [Display(Name = "Is legal person"), Required]
         public bool IsLegalPerson { get; set; }
-        [Display(Name = "Email address"), DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address"), DataType(DataType.EmailAddress), StringLength(100)]
         public string Email { get; set; }
-        [Display(Name = "Phone number"), DataType(DataType.PhoneNumber), DisplayFormat(DataFormatString = "{0:(###) ##-#######}")]
+        [Display(Name = "Phone number"), DataType(DataType.PhoneNumber), DisplayFormat(DataFormatString = "{0:(###) ##-#######}"), StringLength(25)]
         public string PhoneNumber { get; set; }
 
 
@@ -34,7 +34,7 @@ namespace DataLayer.Models
         public DateTimeOffset CreatedDate { get; set; }
         [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? ModifiedDate { get; set; }
-        [Display(Name = "Modified reason")]
+        [Display(Name = "Modified reason"), StringLength(255)]
         public string ModifiedReason { get; set; }
         public virtual AppUser ModifiedBy { get; set; }
 

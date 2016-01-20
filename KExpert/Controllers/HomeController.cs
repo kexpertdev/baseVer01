@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using BusinessLayer;
+using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace KExpert.Controllers
     {
         public ActionResult Index()
         {
-            var db = new KExpertContext();
-            var p = db.Policy.SingleOrDefault();
+            IService service = new BaseService(new KexpertDbRepository());
+            var p = service.GetAllPolicy();
             return View();
         }
 

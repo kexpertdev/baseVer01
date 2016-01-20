@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    [Table("Person")]
+    [Table("BasePerson")]
     public class Person
     {
         [Key]

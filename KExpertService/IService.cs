@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KExpertService.WsModels.Request;
+using KExpertService.WsModels.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,6 +27,9 @@ namespace KExpertService
 
         [OperationContract]
         Task<string> GetStringAsync(string message);
+
+        [OperationContract]
+        Task<PolicyQuoteResponse> GetQuoteAsync(PolicyQuoteRequest message);
 
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);

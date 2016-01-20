@@ -51,10 +51,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="KexpertContext.cs" />
+    <Compile Include="IKexpertDbRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="KExpertDB.cs" />
     <Compile Include="Migrations\201601170123501_Initial.cs" />
     <Compile Include="Migrations\201601170123501_Initial.Designer.cs">
       <DependentUpon>201601170123501_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601172236451_TableModifUpdates.cs" />
+    <Compile Include="Migrations\201601172236451_TableModifUpdates.Designer.cs">
+      <DependentUpon>201601172236451_TableModifUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601192045103_PolicyQuote.cs" />
+    <Compile Include="Migrations\201601192045103_PolicyQuote.Designer.cs">
+      <DependentUpon>201601192045103_PolicyQuote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601192239039_dataAnnotations.cs" />
+    <Compile Include="Migrations\201601192239039_dataAnnotations.Designer.cs">
+      <DependentUpon>201601192239039_dataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601192245357_tableRename.cs" />
+    <Compile Include="Migrations\201601192245357_tableRename.Designer.cs">
+      <DependentUpon>201601192245357_tableRename.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
@@ -85,6 +103,7 @@
     <Compile Include="Models\AppUserRole.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="KexpertDbRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +113,24 @@
     <EmbeddedResource Include="Migrations\201601170123501_Initial.resx">
       <DependentUpon>201601170123501_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601172236451_TableModifUpdates.resx">
+      <DependentUpon>201601172236451_TableModifUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601192045103_PolicyQuote.resx">
+      <DependentUpon>201601192045103_PolicyQuote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601192239039_dataAnnotations.resx">
+      <DependentUpon>201601192239039_dataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601192245357_tableRename.resx">
+      <DependentUpon>201601192245357_tableRename.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{b3f36c1a-578d-49ea-a2eb-bd6a679e3087}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

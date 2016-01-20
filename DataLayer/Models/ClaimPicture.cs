@@ -11,8 +11,8 @@ namespace DataLayer.Models
     [Table("ClaimPicture")]
     public class ClaimPicture
     {
-        [Key]
-        public Guid GUID { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Guid { get; set; }
         //public long ID { get; set; }
 
 

@@ -35,6 +35,7 @@ namespace DataLayer.Models
         [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CreatedDate { get; set; }
 
+
         public override string ToString()
         {
             return Remark + ", " + CreatedDate.ToString();

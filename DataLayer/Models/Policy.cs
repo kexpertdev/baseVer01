@@ -15,15 +15,24 @@ namespace DataLayer.Models
         public long ID { get; set; }
 
 
+        [Display(Name = "Policy number"), StringLength(50)]
         public string PolicyNumber { get; set; }
-      
+
+
+        [Display(Name = "Policy start date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset PolicyStartDate { get; set; }
+        [Display(Name = "Policy end date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset PolicyEndDate { get; set; }
+        [Display(Name = "Cancelled at date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CancelledAtDate { get; set; }
+        [Display(Name = "Cancelled from date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset CancelledFromDate { get; set; }
-        public bool IsLimitedTerm { get; set; }
+        [Display(Name = "Is fixed term"), Required]
+        public bool IsFixedTerm { get; set; }
+
 
         public virtual Product Product { get; set; }
+        public virtual Broker Broker { get; set; }
         public virtual Client Client { get; set; }
         public virtual Vehicle Vehicle { get; set; }
         public virtual PolicyStatus Status { get; set; }
@@ -36,7 +45,7 @@ namespace DataLayer.Models
         public DateTimeOffset CreatedDate { get; set; }
         [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? ModifiedDate { get; set; }
-        [Display(Name = "Modified reason")]
+        [Display(Name = "Modified reason"), StringLength(255)]
         public string ModifiedReason { get; set; }
         public virtual AppUser ModifiedBy { get; set; }
 

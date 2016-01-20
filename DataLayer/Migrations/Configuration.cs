@@ -5,14 +5,14 @@ namespace DataLayer.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DataLayer.KExpertContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataLayer.KExpertDB>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DataLayer.KExpertContext context)
+        protected override void Seed(DataLayer.KExpertDB context)
         {
             //  This method will be called after migrating to the latest version.
 

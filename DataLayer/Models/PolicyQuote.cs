@@ -12,10 +12,30 @@ namespace DataLayer.Models
     public class PolicyQuote
     {
         [Key]
-        public int ID { get; set; }
+        public long ID { get; set; }
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid Guid { get; set; }
 
-        [Required]
-        public string Uid { get; set; }
+
+        public string PolicyType { get; set; }
+        public DateTimeOffset PolicyStartingDate { get; set; }
+        public int PolicyNrOfMonthsValid { get; set; }
+        public string PolicyPaymentMethod { get; set; }
+        public string VehicleType { get; set; }
+        public string VehicleUsage { get; set; }
+        public bool ContractorIsLegalPerson { get; set; }
+        public string PostalCode { get; set; }
+        public string RequestUrl { get; set; }
+
+        
+        public int ResultedQuotePremium { get; set; }
+        public DateTimeOffset PolicyEndingDate { get; set; }
+        public string ClientCodeGenerated { get; set; }
+        public string PaymentUrl { get; set; }
+
+
+        public virtual Product Product { get; set; }
+        public virtual Broker Broker { get; set; }
 
 
         [Display(Name = "Created date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]

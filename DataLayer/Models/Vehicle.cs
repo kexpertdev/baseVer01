@@ -26,6 +26,8 @@ namespace DataLayer.Models
         public string Model { get; set; }
         [Display(Name = "Type"), Required, StringLength(100)]
         public string Type { get; set; }
+        [Display(Name = "Usage"), Required, StringLength(100)]
+        public string Usage { get; set; }
         [Display(Name = "Color"), StringLength(50)]
         public string Color { get; set; }
 
@@ -34,7 +36,7 @@ namespace DataLayer.Models
         public DateTimeOffset CreatedDate { get; set; }
         [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? ModifiedDate { get; set; }
-        [Display(Name = "Modified reason")]
+        [Display(Name = "Modified reason"), StringLength(255)]
         public string ModifiedReason { get; set; }
         public virtual AppUser ModifiedBy { get; set; }
 

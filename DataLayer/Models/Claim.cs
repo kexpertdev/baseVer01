@@ -42,7 +42,7 @@ namespace DataLayer.Models
         public DateTimeOffset CreatedDate { get; set; }
         [Display(Name = "Modified date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? ModifiedDate { get; set; }
-        [Display(Name = "Modified reason")]
+        [Display(Name = "Modified reason"), StringLength(255)]
         public string ModifiedReason { get; set; }
         public virtual AppUser ModifiedBy { get; set; }
 
