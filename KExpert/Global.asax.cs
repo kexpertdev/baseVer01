@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KE.Entities;
+using KExpert.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,11 +13,16 @@ namespace KExpert
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {
+        {           
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutoMapperConfig.RegisterMappings();
+            SimpleInjectorConfig.RegisterDependencies();
+
+            ModelBinders.Binders.DefaultBinder = new PerpetuumSoft.Knockout.KnockoutModelBinder();
         }
     }
 }

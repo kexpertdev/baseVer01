@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{357D3779-5AF5-4D6F-BE0D-32A54451E41B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KE.Entities</RootNamespace>
+    <AssemblyName>KE.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TrackerEnabledDbContext, Version=3.5.1.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.3.5.1\lib\net45\TrackerEnabledDbContext.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.1.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5.1\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="DbModels\Address.cs" />
+    <Compile Include="DbModels\AppUser.cs" />
+    <Compile Include="DbModels\AppUserRole.cs" />
+    <Compile Include="DbModels\BaseModel.cs" />
+    <Compile Include="DbModels\Broker.cs" />
+    <Compile Include="DbModels\Claim.cs" />
+    <Compile Include="DbModels\ClaimContact.cs" />
+    <Compile Include="DbModels\ClaimPicture.cs" />
+    <Compile Include="DbModels\ClaimPictureType.cs" />
+    <Compile Include="DbModels\ClaimType.cs" />
+    <Compile Include="DbModels\Client.cs" />
+    <Compile Include="Emuns\Gender.cs" />
+    <Compile Include="Emuns\ClientTypes.cs" />
+    <Compile Include="Emuns\InsuranceCompanies.cs" />
+    <Compile Include="DbModels\LegalPerson.cs" />
+    <Compile Include="DbModels\Person.cs" />
+    <Compile Include="DbModels\Policy.cs" />
+    <Compile Include="DbModels\PolicyCancellationReason.cs" />
+    <Compile Include="DbModels\PolicyInstallment.cs" />
+    <Compile Include="DbModels\PolicyModificationKeywords.cs" />
+    <Compile Include="DbModels\PolicyModificationReason.cs" />
+    <Compile Include="DbModels\PolicyOnlinePayment.cs" />
+    <Compile Include="DbModels\PolicyPaymentType.cs" />
+    <Compile Include="DbModels\PolicyPeriod.cs" />
+    <Compile Include="DbModels\PolicyQuote.cs" />
+    <Compile Include="DbModels\PolicyRemark.cs" />
+    <Compile Include="DbModels\PolicyRemarkType.cs" />
+    <Compile Include="DbModels\PolicyStatus.cs" />
+    <Compile Include="DbModels\Product.cs" />
+    <Compile Include="DbModels\Vehicle.cs" />
+    <Compile Include="Emuns\LegalEntity.cs" />
+    <Compile Include="Emuns\PolicyPaymentMethods.cs" />
+    <Compile Include="Emuns\PolicyTypes.cs" />
+    <Compile Include="Emuns\Products.cs" />
+    <Compile Include="Emuns\VehicleTypes.cs" />
+    <Compile Include="Emuns\VehicleUsages.cs" />
+    <Compile Include="Models\BrokerDTO.cs" />
+    <Compile Include="Models\PolicyDTO.cs" />
+    <Compile Include="Models\PolicyPeriodDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\AppUserDTO.cs" />
+    <Compile Include="Shared\WsConfig.cs" />
+    <Compile Include="WebViewModels\PolicyBaseViewModel.cs" />
+    <Compile Include="WsModels\PolicyQuoteRequest.cs" />
+    <Compile Include="WsModels\PolicyQuoteResponse.cs" />
+    <Compile Include="WsModels\Validation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

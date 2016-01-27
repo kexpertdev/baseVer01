@@ -1,5 +1,4 @@
-﻿using BusinessLayer;
-using DataLayer;
+﻿using KE.BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +9,24 @@ namespace KExpert.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPolicyService _service;
+
+        public IPolicyService Service
+        {
+            get
+            {
+                return _service;
+            }
+        }
+
+        public HomeController(IPolicyService service) 
+        {
+            if (service == null) throw new ArgumentNullException("IPolicyService");
+            _service = service;
+        }
+
         public ActionResult Index()
         {
-            IService service = new BaseService(new KexpertDbRepository());
-            var p = service.GetAllPolicy();
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
