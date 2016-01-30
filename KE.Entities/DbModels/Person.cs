@@ -25,13 +25,13 @@ namespace KE.Entities.DbModels
         public string MiddleName { get; set; }
         [Display(Name = "Birth place"), Required, StringLength(100)]
         public string BirthPlace { get; set; }
-        [Display(Name = "Birth date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Birth date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTimeOffset BirthDate { get; set; }
-        [Display(Name = "Mother last name"), Required, StringLength(100)]
+        [Display(Name = "Mother last name"), StringLength(100)]
         public string MotherLastName { get; set; }
-        [Display(Name = "Mother first name"), Required, StringLength(100)]
+        [Display(Name = "Mother first name"), StringLength(100)]
         public string MotherFirstName { get; set; }
-        [Display(Name = "Mother middle name"), Required, StringLength(100)]
+        [Display(Name = "Mother middle name"), StringLength(100)]
         public string MotherMiddleName { get; set; }
         [Display(Name = "Gender"), Required, StringLength(10)]
         public string Gender { get; set; }

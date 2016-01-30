@@ -23,7 +23,8 @@ namespace KExpert.App_Start
 
             // Configure the container (register)
             container.Register<IPolicyService, PolicyService>(Lifestyle.Scoped);
-            container.Register<IPolicyRepository, PolicyRepository>(Lifestyle.Scoped);
+            container.Register<IDataAccess, DataAccess>(Lifestyle.Scoped);
+            container.Register<IKexpertDb, KexpertDb>(Lifestyle.Scoped);
 
             // Optionally verify the container's configuration.
             container.Verify();

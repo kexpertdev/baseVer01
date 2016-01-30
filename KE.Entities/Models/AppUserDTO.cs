@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KE.Entities.Models
 {
-    public class AppUserDTO
+    public class AppUserDto
     {
         public int ID { get; set; }
 

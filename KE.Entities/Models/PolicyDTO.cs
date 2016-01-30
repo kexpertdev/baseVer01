@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KE.Entities.Models
 {
-    public class PolicyDTO
+    public class PolicyDto
     {
         public long ID { get; set; }
         [Display(Name = "Policy number"), Required, StringLength(50)]

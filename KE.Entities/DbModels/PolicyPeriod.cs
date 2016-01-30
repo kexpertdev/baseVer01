@@ -37,8 +37,8 @@ namespace KE.Entities.DbModels
         public DateTimeOffset InsuranceEndDate { get; set; }
 
 
-        [Required]
-        public int User_ID { get; set; }
+        //[Required]
+        //public int Broker_ID { get; set; }
         [ForeignKey("Policy"), Required]
         public long Policy_ID { get; set; }
         [ForeignKey("Quote"), Required]

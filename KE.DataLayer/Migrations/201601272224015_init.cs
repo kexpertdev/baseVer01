@@ -31,7 +31,7 @@ namespace KE.DataLayer.Migrations
                         Email = c.String(maxLength: 100),
                         PhoneNumber = c.String(maxLength: 25),
                         Role_ID = c.Int(nullable: false),
-                        CreatedBy_ID = c.Int(nullable: false),
+                        CreatedBy_ID = c.Int(),
                         ModifiedBy_ID = c.Int(),
                         Created = c.DateTimeOffset(nullable: false, precision: 7),
                         Modified = c.DateTimeOffset(precision: 7),
@@ -70,7 +70,7 @@ namespace KE.DataLayer.Migrations
                         IsActive = c.Boolean(nullable: false),
                         Address_ID = c.Int(nullable: false),
                         MailingAddress_ID = c.Int(),
-                        CreatedBy_ID = c.Int(nullable: false),
+                        CreatedBy_ID = c.Int(),
                         ModifiedBy_ID = c.Int(),
                         Created = c.DateTimeOffset(nullable: false, precision: 7),
                         Modified = c.DateTimeOffset(precision: 7),
@@ -78,7 +78,7 @@ namespace KE.DataLayer.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.BaseAddress", t => t.Address_ID, cascadeDelete: false)
-                .ForeignKey("dbo.AppUser", t => t.CreatedBy_ID, cascadeDelete: false)
+                .ForeignKey("dbo.AppUser", t => t.CreatedBy_ID)
                 .ForeignKey("dbo.BaseAddress", t => t.MailingAddress_ID)
                 .ForeignKey("dbo.AppUser", t => t.ModifiedBy_ID)
                 .Index(t => t.Address_ID)
@@ -183,7 +183,6 @@ namespace KE.DataLayer.Migrations
                         InsurerPolicyNumber = c.String(maxLength: 50),
                         InsuranceStartDate = c.DateTimeOffset(nullable: false, precision: 7),
                         InsuranceEndDate = c.DateTimeOffset(nullable: false, precision: 7),
-                        Broker_ID = c.Int(nullable: false),
                         Policy_ID = c.Long(nullable: false),
                         Quote_ID = c.Long(nullable: false),
                         PaymentType_ID = c.Int(nullable: false),
@@ -375,30 +374,24 @@ namespace KE.DataLayer.Migrations
                 "dbo.PolicyQuote",
                 c => new
                     {
-                        ID = c.Long(nullable: false),
-                        Guid = c.Guid(nullable: false, identity: true),
-                        PolicyType = c.String(),
+                        ID = c.Long(nullable: false, identity: true),
+                        Guid = c.Guid(nullable: false),
+                        Broker_ID = c.Int(nullable: false),
+                        Product_ID = c.Int(nullable: false),
+                        PolicyType_ID = c.Int(nullable: false),
                         PolicyStartDate = c.DateTimeOffset(nullable: false, precision: 7),
                         PolicyNrOfMonthsValid = c.Int(nullable: false),
-                        PolicyPaymentMethod = c.String(),
-                        VehicleType = c.String(),
-                        VehicleUsage = c.String(),
-                        ContractorIsLegalPerson = c.Boolean(nullable: false),
-                        PostalCode = c.String(),
+                        PolicyPaymentMethod_ID = c.Int(nullable: false),
+                        VehicleType_ID = c.Int(nullable: false),
+                        VehicleUsage_ID = c.Int(nullable: false),
+                        ContractorIsLegalPerson = c.Byte(nullable: false),
+                        PostalCode = c.String(maxLength: 6),
                         RequestUrl = c.String(),
-                        ResultedQuotePremium = c.Int(nullable: false),
+                        ResultedQuotePremium = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PolicyEndDate = c.DateTimeOffset(nullable: false, precision: 7),
-                        ClientCodeGenerated = c.String(),
-                        PaymentUrl = c.String(),
-                        Product_ID = c.Int(nullable: false),
-                        Broker_ID = c.Int(nullable: false),
                         Created = c.DateTimeOffset(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Broker", t => t.Broker_ID, cascadeDelete: false)
-                .ForeignKey("dbo.Product", t => t.Product_ID, cascadeDelete: false)
-                .Index(t => t.Product_ID)
-                .Index(t => t.Broker_ID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.PolicyInstallment",
@@ -469,8 +462,6 @@ namespace KE.DataLayer.Migrations
             DropForeignKey("dbo.PolicyInstallment", "ModifiedBy_ID", "dbo.AppUser");
             DropForeignKey("dbo.Claim", "PolicyPeriod_ID", "dbo.PolicyPeriod");
             DropForeignKey("dbo.PolicyPeriod", "Quote_ID", "dbo.PolicyQuote");
-            DropForeignKey("dbo.PolicyQuote", "Product_ID", "dbo.Product");
-            DropForeignKey("dbo.PolicyQuote", "Broker_ID", "dbo.Broker");
             DropForeignKey("dbo.PolicyPeriod", "PreviousPolicyPeriod_ID", "dbo.PolicyPeriod");
             DropForeignKey("dbo.PolicyPeriod", "Policy_ID", "dbo.Policy");
             DropForeignKey("dbo.Policy", "Vehicle_ID", "dbo.Vehicle");
@@ -508,8 +499,6 @@ namespace KE.DataLayer.Migrations
             DropIndex("dbo.PolicyRemark", new[] { "RemarkType_ID" });
             DropIndex("dbo.PolicyInstallment", new[] { "ModifiedBy_ID" });
             DropIndex("dbo.PolicyInstallment", new[] { "PolicyPeriod_ID" });
-            DropIndex("dbo.PolicyQuote", new[] { "Broker_ID" });
-            DropIndex("dbo.PolicyQuote", new[] { "Product_ID" });
             DropIndex("dbo.Vehicle", new[] { "ModifiedBy_ID" });
             DropIndex("dbo.BasePerson", new[] { "MailingAddress_ID" });
             DropIndex("dbo.BasePerson", new[] { "Address_ID" });

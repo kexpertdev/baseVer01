@@ -7,13 +7,13 @@ namespace KE.DataLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class modQuote2 : IMigrationMetadata
+    public sealed partial class quoteMod : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(modQuote2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(quoteMod));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601241536201_modQuote2"; }
+            get { return "201601292203332_quoteMod"; }
         }
         
         string IMigrationMetadata.Source

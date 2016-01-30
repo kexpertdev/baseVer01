@@ -11,7 +11,7 @@ namespace KE.DataLayer
     /// <summary>
     /// 
     /// </summary>
-    public interface IPolicyRepository
+    public interface IDataAccess
     {
         IGenericRepository<Policy> PolicyRepo { get; }
         IGenericRepository<PolicyPeriod> PolicyPeriodRepo { get; }
@@ -29,7 +29,8 @@ namespace KE.DataLayer
         /// <returns></returns>
         long GetNextPolicyNumberSequenceValue();
 
-        PolicyQuoteResponse GetQuote(PolicyQuoteRequest request, decimal premium);
+        PolicyQuote SaveQuote(PolicyQuote quote);
+        Task<PolicyQuote> SaveQuoteAsync(PolicyQuote quote);
 
     }
 }

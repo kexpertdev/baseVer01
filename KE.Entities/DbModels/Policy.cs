@@ -33,8 +33,8 @@ namespace KE.Entities.DbModels
         public int Product_ID { get; set; }
         [ForeignKey("Status"), Required]
         public int Status_ID { get; set; }
-        [ForeignKey("User"), Required]
-        public int User_ID { get; set; }
+        [ForeignKey("Broker"), Required]
+        public int Broker_ID { get; set; }
         [ForeignKey("Client"), Required]
         public long Client_ID { get; set; }
         [ForeignKey("Vehicle"), Required]
@@ -51,7 +51,7 @@ namespace KE.Entities.DbModels
 
         public virtual Product Product { get; set; }
         public virtual PolicyStatus Status { get; set; }
-        public virtual AppUser User { get; set; }
+        public virtual Broker Broker { get; set; }
         public virtual Client Client { get; set; }
         public virtual Vehicle Vehicle { get; set; }
         public virtual PolicyCancellationReason CancellationReason { get; set; }

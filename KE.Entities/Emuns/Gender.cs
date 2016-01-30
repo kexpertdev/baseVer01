@@ -1,4 +1,4 @@
-﻿using KE.Entities.Shared;
+﻿using KE.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -14,9 +14,9 @@ namespace KE.DataLayer
     /// 
     /// </summary>
     /// <seealso cref="System.Data.Entity.DbContext" />
-    public class KExpertDB : DbContext
+    public class KexpertDb : DbContext, IKexpertDb
     {
-        public KExpertDB() : base("name=KExpertContext") { }
+        public KexpertDb() : base("name=KExpertContext") { }
 
         public DbSet<AppUser> AppUser { get; set; }
         public DbSet<AppUserRole> AppUserRole { get; set; }

@@ -31,8 +31,8 @@ namespace KE.Entities.DbModels
         public string PhoneNumber { get; set; }
 
 
-        [ForeignKey("Broker"), Required]
-        public int Broker_ID { get; set; }
+        //[ForeignKey("Broker"), Required]
+        //public int Broker_ID { get; set; }
         [ForeignKey("Role"), Required]
         public int Role_ID { get; set; }
         [ForeignKey("CreatedBy")]
@@ -41,7 +41,7 @@ namespace KE.Entities.DbModels
         public int? ModifiedBy_ID { get; set; }
 
 
-        public virtual Broker Broker { get; set; }
+        //public virtual Broker Broker { get; set; }
         public virtual AppUserRole Role { get; set; }
         public virtual AppUser CreatedBy { get; set; }
         public virtual AppUser ModifiedBy { get; set; }

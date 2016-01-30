@@ -16,10 +16,10 @@ namespace KE.DataLayer
     /// <seealso cref="KE.DataLayer.IGenericRepository{TEntity}" />
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private KExpertDB Context;
+        private KexpertDb Context;
         private DbSet<TEntity> DbSet;
 
-        public GenericRepository(KExpertDB context)
+        public GenericRepository(KexpertDb context)
         {
             Context = context;
             DbSet = context.Set<TEntity>();

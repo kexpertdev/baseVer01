@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KE.Entities.Shared
+namespace KE.Entities
 {
     public static class WsConfig
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KE.DataLayer
+namespace KE.Entities.DbModels
 {
-    public interface IUserRepository
+    public class ClaimType
     {
     }
 }

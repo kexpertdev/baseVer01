@@ -12,7 +12,7 @@ namespace KE.Entities.WebViewModels
     /// </summary>
     public class PolicyBaseViewModel
     {
-        public PolicyDTO Policy { get; set; }
-        public PolicyPeriodDTO PolicyPeriod { get; set; }
+        public PolicyDto Policy { get; set; }
+        public PolicyPeriodDto PolicyPeriod { get; set; }
     }
 }

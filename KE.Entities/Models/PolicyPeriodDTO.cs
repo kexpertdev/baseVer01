@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KE.Entities.Models
 {
-    public class PolicyPeriodDTO
+    public class PolicyPeriodDto
     {
         public long ID { get; set; }
         public long PrevID { get; set; }

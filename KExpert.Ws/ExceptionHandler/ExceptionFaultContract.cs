@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KExpert.Ws.ExceptionHandler
 {
-    [Serializable]
+    [DataContract(Name = "ExceptionFaultContract")]
     public class ExceptionFaultContract
     {
         [DataMember(Name="StatusCode")]

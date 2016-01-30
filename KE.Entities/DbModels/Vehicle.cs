@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KE.Entities.Emuns;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,10 +26,10 @@ namespace KE.Entities.DbModels
         public string Make { get; set; }
         [Display(Name = "Model"), Required, StringLength(100)]
         public string Model { get; set; }
-        [Display(Name = "Type"), Required, StringLength(100)]
-        public string Type { get; set; }
-        [Display(Name = "Usage"), Required, StringLength(100)]
-        public string Usage { get; set; }
+        [Display(Name = "Type"), Required]
+        public VehicleTypes Type { get; set; }
+        [Display(Name = "Usage"), Required]
+        public VehicleUsages Usage { get; set; }
         [Display(Name = "Color"), StringLength(50)]
         public string Color { get; set; }
 

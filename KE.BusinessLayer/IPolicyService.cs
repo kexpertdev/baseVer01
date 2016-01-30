@@ -10,7 +10,7 @@ namespace KE.BusinessLayer
 {
     public interface IPolicyService : IService
     {
-        IPolicyRepository Repository { get; }
+        IDataAccess Repository { get; }
 
         /// <summary>
         /// Gets the policy base model.

@@ -12,47 +12,53 @@ namespace KE.BusinessLayer
 {
     public class WsService : IWsService
     {
-        private readonly IPolicyRepository _policyRepo;
-        private readonly IUserRepository _userRepo;
+        #region Properties
+        private readonly IDataAccess _dataAccess;
 
-        public IPolicyRepository PolicyRepository
+        public IDataAccess Repository
         {
             get
             {
-                return _policyRepo;
+                return _dataAccess;
             }
         }
+        #endregion
 
-        public IUserRepository UserRepository
+
+        #region Constructors
+        public WsService(IDataAccess dataAccess) 
         {
-            get
-            {
-                return _userRepo;
-            }
+            if (dataAccess == null) throw new ArgumentNullException("IDataAccess");
+            _dataAccess = dataAccess;
+        }
+        #endregion
+
+
+        #region WebService Methods        
+        /// <summary>
+        /// Gets the quote.
+        /// </summary>
+        /// <param name="quote">The quote.</param>
+        /// <returns></returns>
+        public PolicyQuote GetQuote(PolicyQuote quote)
+        {
+            quote.Premium = GetPremium(quote.Product_ID);
+            return Repository.SaveQuote(quote);           
         }
 
-        public WsService()
+        /// <summary>
+        /// Gets the quote asynchronous.
+        /// </summary>
+        /// <param name="quote">The quote.</param>
+        /// <returns></returns>
+        public async Task<PolicyQuote> GetQuoteAsync(PolicyQuote quote)
         {
-            _userRepo = new UserRepository();
-            _policyRepo = new PolicyRepository();
+            quote.Premium = GetPremium(quote.Product_ID);
+            return await Repository.SaveQuoteAsync(quote);
         }
+        #endregion
 
-        public WsService(IUserRepository userRepo, IPolicyRepository policyRepo) 
-        {
-            if (userRepo == null || policyRepo == null) throw new ArgumentNullException("IPolicyRepository");
-            _userRepo = userRepo;
-            _policyRepo = policyRepo;
-        }
 
-        public PolicyQuoteResponse GetQuote(PolicyQuoteRequest request, AppUser user)
-        {
-            //to do, register mapper
-            decimal premium = GetPremium(request.Product);
-            return PolicyRepository.GetQuote(request, premium);
-        }
-
-        
-        
         #region CalculatePremium
         private decimal GetPremium(Products product)
         {

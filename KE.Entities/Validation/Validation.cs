@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KE.Entities.WsModels
+namespace KE.Entities.Validation
 {
     public class ValidStartDateAttribute : RangeAttribute
     {

@@ -1,4 +1,4 @@
-﻿using KE.Entities.Shared;
+﻿using KE.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,6 @@ namespace KE.Entities.Emuns
         [EnumMember]
         NaturalPerson = 0,
         [EnumMember]
-        LegalEntity = 1
+        LegalPerson = 1
     }
 }

@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -104,22 +104,31 @@
     <Compile Include="Emuns\Products.cs" />
     <Compile Include="Emuns\VehicleTypes.cs" />
     <Compile Include="Emuns\VehicleUsages.cs" />
-    <Compile Include="Models\BrokerDTO.cs" />
-    <Compile Include="Models\PolicyDTO.cs" />
-    <Compile Include="Models\PolicyPeriodDTO.cs" />
+    <Compile Include="Models\BrokerDto.cs" />
+    <Compile Include="Models\PolicyDto.cs" />
+    <Compile Include="Models\PolicyPeriodDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\AppUserDTO.cs" />
-    <Compile Include="Shared\WsConfig.cs" />
+    <Compile Include="Models\AppUserDto.cs" />
+    <Compile Include="WsConfig.cs" />
     <Compile Include="WebViewModels\PolicyBaseViewModel.cs" />
+    <Compile Include="WsModels\Base\WsAddress.cs" />
+    <Compile Include="WsModels\Base\WsClient.cs" />
+    <Compile Include="WsModels\Base\WsPerson.cs" />
+    <Compile Include="WsModels\Base\WsVehicle.cs" />
+    <Compile Include="WsModels\CreatePolicyRequest.cs" />
+    <Compile Include="WsModels\CreatePolicyResponse.cs" />
     <Compile Include="WsModels\PolicyQuoteRequest.cs" />
     <Compile Include="WsModels\PolicyQuoteResponse.cs" />
-    <Compile Include="WsModels\Validation.cs" />
+    <Compile Include="Validation\Validation.cs" />
+    <Compile Include="WsModels\Base\WsLegalPerson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Shared\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
