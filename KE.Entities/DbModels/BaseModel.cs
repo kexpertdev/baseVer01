@@ -11,16 +11,16 @@ namespace KE.Entities.DbModels
     {
         public BaseModel()
         {
-            Created = DateTime.UtcNow;
+            Created = DateTime.Now;
         }
 
 
-        [Display(Name = "Created at"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")] //ApplyFormatInEditMode = true
-        public DateTimeOffset Created { get; set; }
         [Display(Name = "Modified at"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTimeOffset? Modified { get; set; }
         [Display(Name = "Modified reason"), StringLength(255)]
         public string ModifiedReason { get; set; }
+        [Display(Name = "Created at"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")] //ApplyFormatInEditMode = true
+        public DateTimeOffset Created { get; set; }
 
 
         public override string ToString()

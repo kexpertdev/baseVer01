@@ -19,7 +19,7 @@ namespace KE.Entities.WsModels
         [DataMember(Order = 1, IsRequired = true), Required]
         public WsVehicle Vehicle { get; set; }
         [DataMember(Order = 2, IsRequired = true), Required]
-        public WsClient Client { get; set; }
+        public WsClient RegisteredKeeper { get; set; }
 
 
     }

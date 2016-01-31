@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://karexpert.hu/kews/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://karexpert.hu/kews/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://karexpert.hu/kews/Imports">
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd0" namespace="http://karexpert.hu/kews/" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/KExpert.Ws.ExceptionHandler" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd2" namespace="http://karexpert.hu/kews/types/" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd3" namespace="http://karexpert.hu/kews/shared/types/" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/KE.Entities.WsModels" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/KE.Entities.WsMobile" />
+      <xsd:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/KE.Entities.Emuns" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_GetServertime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServertime" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetServertime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServertimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetQuotation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotation" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetQuotation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetQuotation_ExceptionFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/KExpert.Ws.ExceptionHandler" name="detail" element="q1:ExceptionFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetQuote_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuote" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetQuote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePolicy" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetPolicyDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicyDetails" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetPolicyDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPolicyDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_SaveClaimDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClaimDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_SaveClaimDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClaimDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetImageThumbnails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageThumbnails" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetImageThumbnails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageThumbnailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetFullImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullImage" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetFullImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_UploadImageSets_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageSets" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_UploadImageSets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageSetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_PostBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostBase64" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_PostBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostBase64Response" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetBase64_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBase64" />
+  </wsdl:message>
+  <wsdl:message name="IMobileService_GetBase64_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBase64Response" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="GetServertime">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IService/GetServertime" message="tns:IService_GetServertime_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IService/GetServertimeResponse" message="tns:IService_GetServertime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuotation">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IService/GetQuotation" message="tns:IService_GetQuotation_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IService/GetQuotationResponse" message="tns:IService_GetQuotation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://karexpert.hu/kews/IService/GetQuotationExceptionFaultContractFault" name="ExceptionFaultContractFault" message="tns:IService_GetQuotation_ExceptionFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuote">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IService/GetQuote" message="tns:IService_GetQuote_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IService/GetQuoteResponse" message="tns:IService_GetQuote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePolicy">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IService/CreatePolicy" message="tns:IService_CreatePolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IService/CreatePolicyResponse" message="tns:IService_CreatePolicy_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMobileService">
+    <wsdl:operation name="GetPolicyDetails">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/GetPolicyDetails" message="tns:IMobileService_GetPolicyDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/GetPolicyDetailsResponse" message="tns:IMobileService_GetPolicyDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveClaimDocuments">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/SaveClaimDocuments" message="tns:IMobileService_SaveClaimDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/SaveClaimDocumentsResponse" message="tns:IMobileService_SaveClaimDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImageThumbnails">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/GetImageThumbnails" message="tns:IMobileService_GetImageThumbnails_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/GetImageThumbnailsResponse" message="tns:IMobileService_GetImageThumbnails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullImage">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/GetFullImage" message="tns:IMobileService_GetFullImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/GetFullImageResponse" message="tns:IMobileService_GetFullImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImageSets">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/UploadImageSets" message="tns:IMobileService_UploadImageSets_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/UploadImageSetsResponse" message="tns:IMobileService_UploadImageSets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PostBase64">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/PostBase64" message="tns:IMobileService_PostBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/PostBase64Response" message="tns:IMobileService_PostBase64_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBase64">
+      <wsdl:input wsaw:Action="http://karexpert.hu/kews/IMobileService/GetBase64" message="tns:IMobileService_GetBase64_InputMessage" />
+      <wsdl:output wsaw:Action="http://karexpert.hu/kews/IMobileService/GetBase64Response" message="tns:IMobileService_GetBase64_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

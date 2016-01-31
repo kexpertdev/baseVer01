@@ -8,5 +8,6 @@ namespace KE.Entities.WsModels
 {
     public class CreatePolicyResponse
     {
+        public string PolicyNumber { get; set; }
     }
 }

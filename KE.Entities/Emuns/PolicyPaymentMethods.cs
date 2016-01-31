@@ -14,7 +14,7 @@ namespace KE.Entities.Emuns
         [EnumMember]
         Cheque = 1,
         [EnumMember]
-        BankTransfer = 2,
+        Transfer = 2,
         [EnumMember]
         DirectDebit = 3,
         [EnumMember]

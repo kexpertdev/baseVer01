@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KE.Entities.Enums
 {
-    [DataContract(Namespace = WsConfig.SharedShemaNamespace)] 
+    [DataContract(Namespace = WsConfig.SharedShemaNamespace)]
     public enum InsuranceCompanies : int
     {
         [EnumMember]
@@ -20,28 +20,26 @@ namespace KE.Entities.Enums
         [EnumMember]
         Allianz = 3,
         [EnumMember]
-        Generali = 5,
+        Generali = 4,
         [EnumMember]
-        Genertel = 6,
+        Genertel = 5,
         [EnumMember]
-        Groupama = 7,
+        Groupama = 6,
         [EnumMember]
-        KH = 8,
+        KH = 7,
         [EnumMember]
-        KOBE = 9,
+        KOBE = 8,
         [EnumMember]
-        MagyarPosta = 10,
+        MagyarPosta = 9,
         [EnumMember]
-        MKB = 11,
+        MKB = 10,
         [EnumMember]
-        SIGNAL = 12,
+        SIGNAL = 11,
         [EnumMember]
-        UNION = 13,
+        UNION = 12,
         [EnumMember]
-        Uniqa = 14,
+        Uniqa = 13,
         [EnumMember]
-        WABARD = 15,
-        [EnumMember]
-        GroupamaGarancia = 16
+        WABARD = 14
     }
 }

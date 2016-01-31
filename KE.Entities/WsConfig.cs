@@ -13,6 +13,10 @@ namespace KE.Entities
 
         public const string ServiceNamespace = @"http://karexpert.hu/kews/";
         public const string ShemaNamespace = @"http://karexpert.hu/kews/types/";
+
+        //public const string ServiceNamespace = @"http://localhost/kews/";
+        //public const string ShemaNamespace = @"http://localhost/kews/types/";
+
         public const string SharedServiceNamespace = ServiceNamespace + @"shared/";
         public const string SharedShemaNamespace = SharedServiceNamespace + @"types/";
     }

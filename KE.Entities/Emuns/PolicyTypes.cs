@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace KE.Entities.Emuns
 {
     [DataContract(Namespace = WsConfig.SharedShemaNamespace)]
-    public enum PolicyTypes : int
+    public enum PolicyTypes : byte
     {
         [EnumMember]
-        Normal = 1,
+        Normal = 0,
         [EnumMember]
-        FixedTerm = 2
+        FixedTerm = 1
     }
 }

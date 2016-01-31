@@ -43,7 +43,7 @@ namespace KE.DataLayer
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Insert(TEntity entity);
+        TEntity Insert(TEntity entity);
 
         /// <summary>
         /// Updates the specified entity.

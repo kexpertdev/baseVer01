@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KE.Entities.WsMobile" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KE.Entities.WsMobile" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/KE.Entities.Emuns" />
+  <xs:complexType name="PolicyDetails">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PolicyDetails" nillable="true" type="tns:PolicyDetails" />
+  <xs:complexType name="ImageSetCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImageSets" nillable="true" type="tns:ArrayOfImageSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageSetCollection" nillable="true" type="tns:ImageSetCollection" />
+  <xs:complexType name="ArrayOfImageSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImageSet" nillable="true" type="tns:ImageSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImageSet" nillable="true" type="tns:ArrayOfImageSet" />
+  <xs:complexType name="ImageSet">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KE.Entities.Emuns" minOccurs="0" name="ImageSetType" type="q1:ClaimImageSetTypes" />
+      <xs:element minOccurs="0" name="Images" nillable="true" type="tns:ArrayOfImage" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageSet" nillable="true" type="tns:ImageSet" />
+  <xs:complexType name="ArrayOfImage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Image" nillable="true" type="tns:Image" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImage" nillable="true" type="tns:ArrayOfImage" />
+  <xs:complexType name="Image">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Base64Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Image" nillable="true" type="tns:Image" />
+</xs:schema>

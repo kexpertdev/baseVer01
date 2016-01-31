@@ -14,7 +14,7 @@ namespace KE.Entities.Emuns
         [EnumMember]
         Owner = 1,
         [EnumMember]
-        Driver = 2,
+        RegisteredKeeper = 2,
         [EnumMember]
         Beneficiary = 3
     }

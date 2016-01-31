@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://karexpert.hu/kews/types/" elementFormDefault="qualified" targetNamespace="http://karexpert.hu/kews/types/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd3" namespace="http://karexpert.hu/kews/shared/types/" />
+  <xs:import schemaLocation="http://localhost:51050/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="PolicyQuoteRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://karexpert.hu/kews/shared/types/" name="Product" type="q1:Products" />
+      <xs:element xmlns:q2="http://karexpert.hu/kews/shared/types/" name="PolicyType" type="q2:PolicyTypes" />
+      <xs:element minOccurs="0" name="PolicyStartingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PolicyNrOfMonthsValid" type="xs:int" />
+      <xs:element xmlns:q3="http://karexpert.hu/kews/shared/types/" minOccurs="0" name="PolicyPaymentMethod" type="q3:PolicyPaymentMethods" />
+      <xs:element xmlns:q4="http://karexpert.hu/kews/shared/types/" minOccurs="0" name="VehicleType" type="q4:VehicleTypes" />
+      <xs:element xmlns:q5="http://karexpert.hu/kews/shared/types/" minOccurs="0" name="VehicleUsage" type="q5:VehicleUsages" />
+      <xs:element minOccurs="0" name="IsLegalPerson" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PolicyQuoteRequest" nillable="true" type="tns:PolicyQuoteRequest" />
+  <xs:complexType name="PolicyQuoteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="QuoteGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreatedAt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Premium" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PolicyStartingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PolicyEndingDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PolicyQuoteRequest" nillable="true" type="tns:PolicyQuoteRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PolicyQuoteResponse" nillable="true" type="tns:PolicyQuoteResponse" />
+  <xs:complexType name="CreatePolicyRequest">
+    <xs:sequence>
+      <xs:element name="QuoteGuid" type="ser:guid" />
+      <xs:element xmlns:q6="http://karexpert.hu/kews/shared/types/" name="Vehicle" nillable="true" type="q6:Vehicle" />
+      <xs:element xmlns:q7="http://karexpert.hu/kews/shared/types/" name="Client" nillable="true" type="q7:Client" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreatePolicyRequest" nillable="true" type="tns:CreatePolicyRequest" />
+</xs:schema>

@@ -1,4 +1,6 @@
-﻿using KE.DataLayer;
+﻿using AutoMapper;
+using KE.DataLayer;
+using KE.Entities.DbModels;
 using KE.Entities.Models;
 using KE.Entities.WebViewModels;
 using System;
@@ -11,27 +13,29 @@ namespace KE.BusinessLayer
 {
     public class PolicyService : IPolicyService
     {
-        private readonly IDataAccess _repo;
+        #region Properties
+        private readonly IDataAccess _dataAccess;
 
-        public IDataAccess Repository
+        public IDataAccess DataAccess
         {
             get
             {
-                return _repo;
+                return _dataAccess;
             }
         }
 
-        public PolicyService(IDataAccess repository) 
+        public PolicyService(IDataAccess dataAccess) 
         {
-            if (repository == null) throw new ArgumentNullException("IPolicyRepository");
-            _repo = repository;
+            if (dataAccess == null) throw new ArgumentNullException("IDataAccess");
+            _dataAccess = dataAccess;
         }
+        #endregion
 
-
+        #region Methods        
         public PolicyBaseViewModel GetPolicyBaseModel(long id)
         {
-            var policy = AutoMapper.Mapper.Map<PolicyDto>(Repository.PolicyRepo.GetByID(id));
-            var policyPeriod =  policy == null ? null : AutoMapper.Mapper.Map<PolicyPeriodDto>(Repository.PolicyPeriodRepo.GetByID(policy.LastPolicyPeriodID));
+            var policy = AutoMapper.Mapper.Map<PolicyDto>(DataAccess.PolicyRepo.GetByID(id));
+            var policyPeriod = policy == null ? null : AutoMapper.Mapper.Map<PolicyPeriodDto>(DataAccess.PolicyPeriodRepo.GetByID(policy.LastPolicyPeriodID));
 
             return new PolicyBaseViewModel()
             {
@@ -39,5 +43,11 @@ namespace KE.BusinessLayer
                 PolicyPeriod = policyPeriod
             };
         }
+
+        public List<QuoteDto> GetQuotes()
+        {
+            return Mapper.Map<List<PolicyQuote>, List<QuoteDto>>(DataAccess.QuoteRepo.GetAll().ToList());
+        }
+        #endregion
     }
 }

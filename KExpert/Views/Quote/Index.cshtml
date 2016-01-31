@@ -1,0 +1,117 @@
+﻿@model IEnumerable<KE.Entities.Models.QuoteDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Guid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Broker_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyType_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyNrOfMonthsValid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyPaymentMethod_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleType_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleUsage_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsLegalPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Premium)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Broker_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyType_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyNrOfMonthsValid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyPaymentMethod_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleUsage_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsLegalPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Premium)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

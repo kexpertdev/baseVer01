@@ -34,7 +34,7 @@ namespace KE.Entities.DbModels
         public string Color { get; set; }
 
 
-        [ForeignKey("ModifiedBy"), Required]
+        [ForeignKey("ModifiedBy")]
         public int? ModifiedBy_ID { get; set; }
 
 

@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KExpert.Web", "KExpert\KExpert.Web.csproj", "{0BDF6EAC-2291-49AF-A161-D738B6E53DCC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C300ACA2-D8D9-48FC-BCE9-47C461FDB95C} = {C300ACA2-D8D9-48FC-BCE9-47C461FDB95C}
+		{DD725FDE-2420-491E-96A2-97F7685388BB} = {DD725FDE-2420-491E-96A2-97F7685388BB}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KE.Entities", "KE.Entities\KE.Entities.csproj", "{357D3779-5AF5-4D6F-BE0D-32A54451E41B}"
@@ -16,11 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KE.BusinessLayer", "KE.Busi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KE.Common", "KE.Common\KE.Common.csproj", "{B3F36C1A-578D-49EA-A2EB-BD6A679E3087}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KExpert.Api", "KExpert.Api\KExpert.Api.csproj", "{3E53488F-F71A-4F6F-AC3B-73CA42016888}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KExpert.Ws", "KExpert.Ws\KExpert.Ws.csproj", "{DD725FDE-2420-491E-96A2-97F7685388BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KExpert.Ws.Test.Console", "KExpert.Ws.Test.Console\KExpert.Ws.Test.Console.csproj", "{CF17C471-2DB9-4EF0-958F-166A72ED561F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD725FDE-2420-491E-96A2-97F7685388BB} = {DD725FDE-2420-491E-96A2-97F7685388BB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +50,6 @@ Global
 		{B3F36C1A-578D-49EA-A2EB-BD6A679E3087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F36C1A-578D-49EA-A2EB-BD6A679E3087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F36C1A-578D-49EA-A2EB-BD6A679E3087}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E53488F-F71A-4F6F-AC3B-73CA42016888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E53488F-F71A-4F6F-AC3B-73CA42016888}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E53488F-F71A-4F6F-AC3B-73CA42016888}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E53488F-F71A-4F6F-AC3B-73CA42016888}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD725FDE-2420-491E-96A2-97F7685388BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD725FDE-2420-491E-96A2-97F7685388BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD725FDE-2420-491E-96A2-97F7685388BB}.Release|Any CPU.ActiveCfg = Release|Any CPU

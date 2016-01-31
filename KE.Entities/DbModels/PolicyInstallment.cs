@@ -23,16 +23,16 @@ namespace KE.Entities.DbModels
         public DateTimeOffset DueDate { get; set; }
         [Display(Name = "Installment value"), Required, DisplayFormat(DataFormatString = "{0.##}")]
         public decimal Value { get; set; }
-        [Display(Name = "Income value"), Required, DisplayFormat(DataFormatString = "{0.##}")]
+        [Display(Name = "Income value"), DisplayFormat(DataFormatString = "{0.##}")]
         public decimal IncomeValue { get; set; }
-        [Display(Name = "Payed date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTimeOffset PayedDate { get; set; }
+        [Display(Name = "Payed date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTimeOffset? PayedDate { get; set; }
         [Display(Name = "Is paid"), Required]
         public bool IsPaid { get; set; }
-        [Display(Name = "Cheque sent to print date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTimeOffset ChequeSentToPrint { get; set; }
-        [Display(Name = "Cheque resent to print date"), Required, DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTimeOffset ChequeReSentToPrint { get; set; }
+        [Display(Name = "Cheque sent to print date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTimeOffset? ChequeSentToPrint { get; set; }
+        [Display(Name = "Cheque resent to print date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTimeOffset? ChequeReSentToPrint { get; set; }
 
 
         [ForeignKey("PolicyPeriod"), Required]

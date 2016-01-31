@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KE.Entities.Emuns;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -35,7 +36,7 @@ namespace KE.Entities.DbModels
         [ForeignKey("Claimant"), Required]
         public int Claimant_ID { get; set; }
         [ForeignKey("PictureType"), Required]
-        public int PictureType_ID { get; set; }
+        public ClaimImageSetTypes PictureType_ID { get; set; }
 
 
         public virtual ClaimContact Claimant { get; set; }

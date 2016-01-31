@@ -1,4 +1,5 @@
 ﻿using KE.DataLayer;
+using KE.Entities.Models;
 using KE.Entities.WebViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace KE.BusinessLayer
 {
     public interface IPolicyService : IService
     {
-        IDataAccess Repository { get; }
+        IDataAccess DataAccess { get; }
 
         /// <summary>
         /// Gets the policy base model.
@@ -18,5 +19,11 @@ namespace KE.BusinessLayer
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         PolicyBaseViewModel GetPolicyBaseModel(long id);
+
+        /// <summary>
+        /// Gets the quotes.
+        /// </summary>
+        /// <returns></returns>
+        List<QuoteDto> GetQuotes();
     }
 }

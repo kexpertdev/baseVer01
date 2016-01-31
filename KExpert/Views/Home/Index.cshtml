@@ -2,4 +2,30 @@
     ViewBag.Title = "Home Page";
 }
 
-<input type="date">
+<input id="uploadBox" type="file">
+<img id="img" src="" />
+<div id="base"></div>
+
+
+<script>
+    File.prototype.convertToBase64 = function (callback) {
+        var FR = new FileReader();
+        FR.onload = function (e) {
+            document.getElementById('img').src = e.target.result;
+            document.getElementById('base').innerHTML = e.target.result;
+            callback(e.target.result)
+        };
+        FR.readAsDataURL(this);
+    }
+
+
+    $("#uploadBox").on('change', function () {
+        var selectedFile = this.files[0];
+        selectedFile.convertToBase64(function (base64) {
+            console.log(base64);
+            var imgData = base64.replace(' ', '+').substring(22);
+            $.post('/Home/SendFile', { base64String: imgData, filename: selectedFile.name, mime: selectedFile.type }, function (data) { console.log(data); });
+        })
+    });
+
+</script>

@@ -1,5 +1,6 @@
 ﻿using KE.BusinessLayer;
 using KE.Entities;
+using KE.Entities.WsMobile;
 using KE.Entities.WsModels;
 using KExpert.Ws.ExceptionHandler;
 using System;
@@ -19,9 +20,6 @@ namespace KExpert.Ws
     //[ServiceContract]
     public interface IService
     {
-        IWsService WS { get; }
-
-
         [OperationContract]
         string GetServertime();
 
@@ -34,5 +32,36 @@ namespace KExpert.Ws
 
         [OperationContract]
         CreatePolicyResponse CreatePolicy(CreatePolicyRequest inputParameters);
+
+        //[OperationContract]
+        //void RenewingPolicy();
+
+
+
+        //Mobile
+        //TODO refact, separete from brokers webservice
+        //[OperationContract]
+        //PolicyDetails GetPolicyDetails(string policyId);
+
+        //[OperationContract]
+        //bool SaveClaimDocuments(string policyId);
+
+        //[OperationContract]
+        //ImageSetCollection GetImageThumbnails(string policyId);
+
+        //[OperationContract]
+        //Image GetFullImage(string guid);
+        
+        //[OperationContract]
+        //[WebInvoke(UriTemplate = "UploadImageSets", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        //bool UploadImageSets(ImageSetCollection imageSetCollection);
+
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", UriTemplate = "PostBase64", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        //string PostBase64(string base64);
+
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", UriTemplate = "GetBase64", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        //string GetBase64(string guid);
     }
 }

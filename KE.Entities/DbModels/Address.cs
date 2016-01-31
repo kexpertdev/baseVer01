@@ -19,9 +19,9 @@ namespace KE.Entities.DbModels
         public string PostalCode { get; set; }
         [Display(Name = "City"), Required, StringLength(100)]
         public string City { get; set; }
-         [Display(Name = "Street name"), Required, StringLength(100)]
+        [Display(Name = "Street name"), Required, StringLength(100)]
         public string StreetName { get; set; }
-         [Display(Name = "Street number"), Required, StringLength(25)]
+        [Display(Name = "Street number"), Required, StringLength(25)]
         public string StreetNumber { get; set; }
 
 

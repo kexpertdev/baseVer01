@@ -36,11 +36,15 @@ namespace KE.Entities.Models
         public DateTimeOffset InsuranceEndDate { get; set; }
 
 
+        
+        //public int Broker_ID { get; set; }
         [Required]
-        public int Broker_ID { get; set; }
         public int Policy_ID { get; set; }
+        [Required]
         public int Quote_ID { get; set; }
+        [Required]
         public int PaymentType_ID { get; set; }
+        [Required]
         public int? PreviousPolicyPeriod_ID { get; set; }
         
 

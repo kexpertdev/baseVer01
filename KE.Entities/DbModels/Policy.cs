@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KE.Entities.Emuns;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,7 +26,7 @@ namespace KE.Entities.DbModels
         public DateTimeOffset? CancelledAtDate { get; set; }
         [Display(Name = "Cancelled from date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTimeOffset? CancelledFromDate { get; set; }
-        [Display(Name = "Is fixed term"), Required]
+        [Display(Name = "Policy type"), Required]
         public bool IsFixedTerm { get; set; }
 
 

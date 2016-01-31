@@ -3,6 +3,7 @@ using DevTrends.WCFDataAnnotations;
 using KE.BusinessLayer;
 using KE.Entities.DbModels;
 using KE.Entities.Emuns;
+using KE.Entities.WsMobile;
 using KE.Entities.WsModels;
 using KExpert.Ws.ExceptionHandler;
 using KExpert.Ws.Mapping;
@@ -17,6 +18,10 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft;
+using System.IO;
+using System.Drawing;
+using System.Web.Hosting;
 
 namespace KExpert.Ws
 {
@@ -26,12 +31,12 @@ namespace KExpert.Ws
     [AutomapServiceBehavior]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     [ValidateDataAnnotationsBehavior]
-    public class Service : IService
+    public class Service : IService, IMobileService
     {
         #region Properties
         private readonly IWsService _service;
 
-        public IWsService WS
+        public IWsService Wservice
         {
             get
             {
@@ -54,6 +59,7 @@ namespace KExpert.Ws
         }
 
 
+
         #region Brokers WebService
         /// <summary>
         /// Gets the quotation asynchronous.
@@ -66,24 +72,14 @@ namespace KExpert.Ws
         {
             try
             {
+                //to do AUTH
                 IncomingWebRequestContext request = WebOperationContext.Current.IncomingRequest;
                 WebHeaderCollection headers = request.Headers;
                 var url = HttpContext.Current.Request.Url.AbsoluteUri;
 
-                //service = new WsService();
-
-                //to do AUTH
-                //IIdentity primaryIdentity = ServiceSecurityContext.Current.PrimaryIdentity;
                 Broker broker = new Broker() { ID = 1, Name = "Test"};
 
-                PolicyQuote quote = Mapper.Map<PolicyQuote>(inputParameters);
-                quote.Broker_ID = broker.ID;
-                quote.RequestUrl = url;
-
-                PolicyQuote savedQuote = await WS.GetQuoteAsync(quote);
-
-                PolicyQuoteResponse result = AutoMapper.Mapper.Map<PolicyQuoteResponse>(savedQuote);
-                result.PolicyQuoteRequest = inputParameters;
+                PolicyQuoteResponse result = await Wservice.GetQuoteAsync(inputParameters, broker, url);
 
                 return result;
             }
@@ -107,16 +103,15 @@ namespace KExpert.Ws
             try
             {
                 //to do AUTH
-                //IIdentity primaryIdentity = ServiceSecurityContext.Current.PrimaryIdentity;
+                IncomingWebRequestContext request = WebOperationContext.Current.IncomingRequest;
+                var context = OperationContext.Current;
+                var url = context.IncomingMessageHeaders.To.AbsoluteUri;
+                //WebHeaderCollection headers = request.Headers;
+                //var url = HttpContext.Current.Request.Url.AbsoluteUri;
+
                 Broker broker = new Broker() { ID = 1, Name = "Test" };
 
-                PolicyQuote quote = AutoMapper.Mapper.Map<PolicyQuote>(inputParameters);
-                quote.Broker_ID = broker.ID;
-
-                PolicyQuote savedQuote = WS.GetQuote(quote);
-
-                PolicyQuoteResponse result = AutoMapper.Mapper.Map<PolicyQuoteResponse>(savedQuote);
-                result.PolicyQuoteRequest = inputParameters;
+                PolicyQuoteResponse result = Wservice.GetQuote(inputParameters, broker, url);
 
                 return result;
 
@@ -154,6 +149,7 @@ namespace KExpert.Ws
             catch (Exception ex)
             {
                 throw new FaultException("GetQuote error description");
+                //throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("GetQuote", "message", "description"));
             }
         }
 
@@ -167,8 +163,82 @@ namespace KExpert.Ws
         /// <exception cref="ExceptionFaultContract">CreatePolicy;not implemented</exception>
         public CreatePolicyResponse CreatePolicy(CreatePolicyRequest inputParameters) 
         {
-            throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("CreatePolicy", "Not implemented", "CreatePolicy not implemented "));
+            try
+            {
+                //to do AUTH
+                IncomingWebRequestContext request = WebOperationContext.Current.IncomingRequest;
+                WebHeaderCollection headers = request.Headers;
+                //var url = HttpContext.Current.Request.Url.AbsoluteUri;
+                Broker broker = new Broker() { ID = 1, Name = "Test" };
+
+                CreatePolicyResponse result = Wservice.CreatePolicy(inputParameters, broker);
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                //throw new FaultException("CreatePolicy error description");
+                throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("CreatePolicy", "Error during creating the policy", ex.Message), "");
+            }
         }
         #endregion
+
+
+
+        #region Mobile WebService
+        public PolicyDetails GetPolicyDetails(string policyId)
+        {
+            throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("webapi", "GetPolicyDetails", "not implemented "));
+        }
+
+        public bool SaveClaimDocuments(string policyId)
+        {
+            throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("webapi", "SaveClaimDocuments", "not implemented "));
+        }
+
+        public ImageSetCollection GetImageThumbnails(string policyId)
+        {
+            throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("webapi", "GetImageThumbnails", "not implemented "));
+        }
+
+        public KE.Entities.WsMobile.Image GetFullImage(string guid)
+        {
+            throw new FaultException<ExceptionFaultContract>(new ExceptionFaultContract("webapi", "GetFullImage", "not implemented "));
+        }
+
+        public bool UploadImageSets(ImageSetCollection imageSetCollection)
+        {
+            var imgSets = imageSetCollection.ImageSets;
+            return true;
+        }
+
+        public string PostBase64(string base64)
+        {
+            try
+            {
+                byte[] bytes = Convert.FromBase64String(base64);
+                System.Drawing.Image image;
+                using (var ms = new MemoryStream(bytes, 0, bytes.Length))
+                {
+                    ms.Write(bytes, 0, bytes.Length);
+                    image = System.Drawing.Image.FromStream(ms, true, true);
+                }
+                image.Save(HostingEnvironment.MapPath("~/upload/" + "Pic" + ".png"), System.Drawing.Imaging.ImageFormat.Png);
+
+                return "Saved";
+            }
+            catch(Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
+        public string GetBase64(string guid)
+        {
+            return Convert.ToBase64String(File.ReadAllBytes(HostingEnvironment.MapPath("~/upload/" + "Pic" + ".png")));
+        }
+        #endregion
+
     }
 }

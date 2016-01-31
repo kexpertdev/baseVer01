@@ -37,6 +37,8 @@ namespace KE.DataLayer
         public DbSet<PolicyPeriod> Period { get; set; }
         public DbSet<PolicyInstallment> Installment { get; set; }
         public DbSet<PolicyQuote> Quote { get; set; }
+        public DbSet<InsuranceCompany> InsuranceCompany { get; set; }
+        public DbSet<InsurancePolicy> InsurancePolicy { get; set; }
 
         public DbSet<PolicyStatus> Status { get; set; }
         public DbSet<PolicyPaymentType> PaymentType { get; set; }
@@ -58,7 +60,7 @@ namespace KE.DataLayer
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<AppUser>()
-                .HasRequired(u => u.CreatedBy)  // this could be a problem, see below
+                .HasOptional(u => u.CreatedBy)  // this could be a problem, see below
                 .WithMany()
                 .HasForeignKey(u => u.CreatedBy_ID);
 

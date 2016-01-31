@@ -32,7 +32,6 @@ namespace KE.DataLayer
 
         #region Repositories
         private IGenericRepository<Policy> _policyRepo;
-
         public IGenericRepository<Policy> PolicyRepo 
         {
             get 
@@ -46,7 +45,6 @@ namespace KE.DataLayer
         }
 
         private IGenericRepository<PolicyPeriod> _policyPeriodRepo;
-
         public IGenericRepository<PolicyPeriod> PolicyPeriodRepo 
         {
             get
@@ -56,6 +54,19 @@ namespace KE.DataLayer
                     _policyPeriodRepo = new GenericRepository<PolicyPeriod>((KexpertDb)_context);
                 }
                 return _policyPeriodRepo;
+            }
+        }
+
+        private IGenericRepository<PolicyQuote> _quoteRepo;
+        public IGenericRepository<PolicyQuote> QuoteRepo
+        {
+            get
+            {
+                if (_quoteRepo == null)
+                {
+                    _quoteRepo = new GenericRepository<PolicyQuote>((KexpertDb)_context);
+                }
+                return _quoteRepo;
             }
         }
         #endregion
@@ -69,81 +80,144 @@ namespace KE.DataLayer
 
 
         #region Methods
-        /// <summary>
-        /// Gets all policy.
-        /// </summary>
-        /// <returns></returns>
         public IEnumerable<Policy> GetAllPolicy()
         {
             return PolicyRepo.GetAll();
             //return Context.Policy.ToList();
         }
 
-        /// <summary>
-        /// Gets the next policy number sequence value.
-        /// </summary>
-        /// <returns></returns>
-        public long GetNextPolicyNumberSequenceValue()
-        {
-            return CallStoredProcedure<long>("GetNextPolicyNumberSequenceValue").FirstOrDefault();
-        }
 
-
-        /// <summary>
-        /// Saves the quote.
-        /// </summary>
-        /// <param name="quote">The quote.</param>
-        /// <returns></returns>
         public PolicyQuote SaveQuote(PolicyQuote quote)
         {
             PolicyQuote savedQuote = Context.Quote.Add(quote);
-            Context.SaveChanges();
+            SaveChanges();
 
             return savedQuote;
         }
 
-        /// <summary>
-        /// Saves the quote asynchronous.
-        /// </summary>
-        /// <param name="quote">The quote.</param>
-        /// <returns></returns>
         public async Task<PolicyQuote> SaveQuoteAsync(PolicyQuote quote)
         {
-            PolicyQuote savedQuote = Context.Quote.Add(quote);
+            //PolicyQuote savedQuote = Context.Quote.Add(quote);
+            PolicyQuote savedQuote = QuoteRepo.Insert(quote);
             await Context.SaveChangesAsync();
 
             return savedQuote;
+        }
+
+        public Policy SavePolicy(Guid guid, Client client, Vehicle vehicle, Broker broker)
+        {
+            PolicyQuote quote = QuoteRepo.GetByID(guid);
+            if (quote == null)
+                throw new Exception("The supplied guid not exists");
+            if(quote.Period.Count > 0)
+                throw new Exception("The quote already is transferred to policy");
+
+            //check if exists policy with quote
+            //check if the quid belong to the brokee or not
+            //check againts quote starting date, and modify if we need!!!
+
+            string policyNumber = GetNextPolicyNumber(quote.Product_ID);
+            client.ClientCode = policyNumber;
+
+            Policy policy = new Policy()
+            {
+                PolicyNumber = policyNumber,
+                PolicyStartDate = quote.PolicyStartDate,
+                PolicyEndDate = quote.PolicyEndDate,
+                IsFixedTerm = quote.PolicyType_ID == PolicyTypes.FixedTerm ? true : false,
+                Product_ID = Convert.ToInt32(quote.Product_ID),
+                Status_ID = Convert.ToInt32(PolicyStatuses.Policy),
+                Broker_ID = quote.Broker_ID,
+                CreatedBy_ID = 1, //sysadmin, to do
+                Client = client,
+                Vehicle = vehicle,
+                PolicyPeriods = new List<PolicyPeriod>()
+                {
+                    new PolicyPeriod()
+                    {
+                        PeriodStartDate = quote.PolicyStartDate,
+                        PeriodEndDate = quote.PolicyEndDate,
+                        Premium = quote.Premium,
+                        IsLastPeriod = true,
+                        PeriodNumber = 1,
+                        PaymentType_ID = Convert.ToInt32(quote.PolicyPaymentMethod_ID),
+                        PreviousPolicyPeriod_ID = null,
+                        Quote = quote,
+                        Installment = new List<PolicyInstallment>()
+                        {
+                            new PolicyInstallment()
+                            {
+                                Nr = 1,
+                                Type = 1,
+                                DueDate = quote.PolicyStartDate,
+                                Value = quote.Premium
+                            }
+                        },
+                        InsurancePolicies = new List<InsurancePolicy>()
+                        {
+                            new InsurancePolicy()
+                            {
+                                Company = Convert.ToInt32(quote.InsuranceCompany),
+                                PolicyNumber = quote.InsurancePolicyNumber,
+                                StartDate = quote.InsuranceStartDate,
+                                EndDate = quote.InsuranceEndDate
+                            }
+                        }
+                    }
+                }
+            };
+
+            Policy savedPolicy = PolicyRepo.Insert(policy);
+            SaveChanges();
+
+            return savedPolicy;
         }
         #endregion
 
 
         #region Call StoredProcedure
+        public string GetNextPolicyNumber(Products productID)
+        {
+            try
+            {
+                long nextSeq = CallStoredProcedure<long>("GetNextPolicyNumberSequenceValue").FirstOrDefault();
+                int prodCode = Convert.ToInt32(productID); //Enum.Parse(typeof(Products), productID.ToString());
+                return "KE" + prodCode.ToString() + nextSeq.ToString("D7");
+            }
+            catch
+            {
+                throw new Exception("Error during generating the policy number");
+            }
+        }
+
         public IEnumerable<T> CallStoredProcedure<T>(string name)
         {
             IEnumerable<T> result;
-            using (Context)
-            {
-                result = Context.Database
-                    .SqlQuery<T>(name)
-                    .ToList();
-            }
+            result = Context.Database
+                .SqlQuery<T>(name)
+                .ToList();
+            
             return result;
         }
 
         public IEnumerable<T> CallStoredProcedure<T>(string name, SqlParameterCollection parameters)
         {
-            IEnumerable<T> result;
-            using (Context)
-            {
-                //var clientIdParameter = new SqlParameter("@ClientId", 4);
-                result = Context.Database
-                    .SqlQuery<T>(name)
-                    .ToList();
-            }
+            IEnumerable<T> result;   
+            //var clientIdParameter = new SqlParameter("@ClientId", 4);
+            result = Context.Database
+                .SqlQuery<T>(name)
+                .ToList();
             return result;
         }
         #endregion
 
+
+        #region SaveChanges
+        public int SaveChanges()
+        {
+            return Context.SaveChanges();
+        }
+        #endregion
 
         //#region Dispose
         //public void Dispose()

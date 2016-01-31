@@ -1,4 +1,5 @@
 ﻿using KE.Entities.DbModels;
+using KE.Entities.Emuns;
 using KE.Entities.WsModels;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace KE.DataLayer
     {
         IGenericRepository<Policy> PolicyRepo { get; }
         IGenericRepository<PolicyPeriod> PolicyPeriodRepo { get; }
+        IGenericRepository<PolicyQuote> QuoteRepo { get; }
 
+        int SaveChanges();
 
         /// <summary>
         /// Gets all policy.
@@ -24,13 +27,33 @@ namespace KE.DataLayer
         IEnumerable<Policy> GetAllPolicy();
 
         /// <summary>
-        /// Gets the next policy number sequence value.
+        /// Saves the quote.
         /// </summary>
+        /// <param name="quote">The quote.</param>
         /// <returns></returns>
-        long GetNextPolicyNumberSequenceValue();
-
         PolicyQuote SaveQuote(PolicyQuote quote);
+
+        /// <summary>
+        /// Saves the quote asynchronous.
+        /// </summary>
+        /// <param name="quote">The quote.</param>
+        /// <returns></returns>
         Task<PolicyQuote> SaveQuoteAsync(PolicyQuote quote);
 
+        /// <summary>
+        /// Saves the policy.
+        /// </summary>
+        /// <param name="guid">The unique identifier.</param>
+        /// <param name="client">The client.</param>
+        /// <param name="vehicle">The vehicle.</param>
+        /// <returns></returns>
+        Policy SavePolicy(Guid guid, Client client, Vehicle vehicle, Broker broker);
+
+        /// <summary>
+        /// Gets the next policy number.
+        /// </summary>
+        /// <param name="productID">The product identifier.</param>
+        /// <returns></returns>
+        string GetNextPolicyNumber(Products productID);
     }
 }

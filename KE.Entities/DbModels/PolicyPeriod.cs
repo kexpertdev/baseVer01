@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KE.Entities.Emuns;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,22 +28,12 @@ namespace KE.Entities.DbModels
         public int PeriodNumber { get; set; }
 
 
-        [Display(Name = "Insurer company"), StringLength(50)]
-        public string InsurerCompany { get; set; }
-        [Display(Name = "Insurer policy number"), StringLength(50)]
-        public string InsurerPolicyNumber { get; set; }
-        [Display(Name = "Insurance start date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTimeOffset InsuranceStartDate { get; set; }
-        [Display(Name = "Insurance end date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTimeOffset InsuranceEndDate { get; set; }
-
-
         //[Required]
         //public int Broker_ID { get; set; }
         [ForeignKey("Policy"), Required]
         public long Policy_ID { get; set; }
         [ForeignKey("Quote"), Required]
-        public long Quote_ID { get; set; }
+        public Guid Quote_ID { get; set; }
         [ForeignKey("PaymentType"), Required]
         public int PaymentType_ID { get; set; }
         [ForeignKey("PreviousPolicyPeriod")]
@@ -54,7 +45,8 @@ namespace KE.Entities.DbModels
         public virtual PolicyQuote Quote { get; set; }
         public virtual PolicyPaymentType PaymentType { get; set; }
         public virtual PolicyPeriod PreviousPolicyPeriod { get; set; }
-
+        public virtual ICollection<PolicyInstallment> Installment { get; set; }
+        public virtual ICollection<InsurancePolicy> InsurancePolicies { get; set; }
 
         [Display(Name = "Is first period"), NotMapped]
         public bool IsFirstPeriod

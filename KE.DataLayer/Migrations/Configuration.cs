@@ -18,8 +18,28 @@ namespace KE.DataLayer.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            /*
+
+            #region Seed
+            var insurance = new List<InsuranceCompany>
+            {
+                new InsuranceCompany { Name = "AEGON" },
+                new InsuranceCompany { Name = "AIM" },
+                new InsuranceCompany { Name = "Generali" },
+                new InsuranceCompany { Name = "Genertel" },
+                new InsuranceCompany { Name = "Groupama" },
+                new InsuranceCompany { Name = "KH" },
+                new InsuranceCompany { Name = "KOBE" },
+                new InsuranceCompany { Name = "MagyarPosta" },
+                new InsuranceCompany { Name = "MKB" },
+                new InsuranceCompany { Name = "SIGNAL" },
+                new InsuranceCompany { Name = "Uniqa" },
+                new InsuranceCompany { Name = "UNION" },
+                new InsuranceCompany { Name = "WABARD" }
+            };
+            insurance.ForEach(s => context.InsuranceCompany.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
 
             var product = new List<Product>
             {
@@ -48,7 +68,7 @@ namespace KE.DataLayer.Migrations
                     IsActive = true,
                     Email = "a@a.com",
                     Role = role.FirstOrDefault(),
-                    CreatedBy = null,
+                    CreatedBy_ID = null,
                     Created = DateTime.Now
                 },
             };
@@ -81,13 +101,25 @@ namespace KE.DataLayer.Migrations
                     Created = DateTime.Now}
             };
             broker.ForEach(s => context.Broker.AddOrUpdate(p => p.TaxNumber, s));
-            context.SaveChanges(); 
+            context.SaveChanges();
+
+
+            var payment = new List<PolicyPaymentType>
+            {
+                new PolicyPaymentType { Name = "Cheque" },
+                new PolicyPaymentType { Name = "Transfer" },
+                new PolicyPaymentType { Name = "DirectDebit" },
+                new PolicyPaymentType { Name = "BankCard" }
+            };
+            payment.ForEach(s => context.PaymentType.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
 
 
             var status = new List<PolicyStatus>
             {
                 new PolicyStatus { Name = "Offer" },
                 new PolicyStatus { Name = "Policy" },
+                new PolicyStatus { Name = "Rejected" },
                 new PolicyStatus { Name = "Cancelled" }
             };
             status.ForEach(s => context.Status.AddOrUpdate(p => p.Name, s));
@@ -117,7 +149,10 @@ namespace KE.DataLayer.Migrations
             };
             modifReasons.ForEach(s => context.ModificationReason.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
-        }
 
+            #endregion
+
+            */
+        }
     }
 }

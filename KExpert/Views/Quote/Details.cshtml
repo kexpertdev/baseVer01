@@ -1,0 +1,138 @@
+﻿@model KE.Entities.Models.QuoteDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QuoteDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Broker_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Broker_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyType_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyType_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyNrOfMonthsValid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyNrOfMonthsValid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyPaymentMethod_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyPaymentMethod_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleType_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleType_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleUsage_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleUsage_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLegalPerson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLegalPerson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Premium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Premium)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

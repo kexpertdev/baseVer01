@@ -63,9 +63,9 @@ namespace KE.DataLayer
             return DbSet.Find(id);
         }
 
-        public virtual void Insert(TEntity entity)
+        public virtual TEntity Insert(TEntity entity)
         {
-            DbSet.Add(entity);
+            return DbSet.Add(entity);
         }
 
         public virtual void Update(TEntity entityToUpdate)
