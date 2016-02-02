@@ -61,7 +61,7 @@ namespace KE.Entities.DbModels
 
         public override string ToString()
         {
-            return Policy.PolicyNumber + " - " + PeriodStartDate.ToString() + ", " + PeriodEndDate.ToString();
+            return Policy.PolicyNumber + ", premium: " + Premium.ToString() + ", " + PeriodStartDate.ToString() + " - " + PeriodEndDate.ToString();
         }
     }
 }

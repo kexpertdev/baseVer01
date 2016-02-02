@@ -18,7 +18,7 @@ namespace KE.BusinessLayer
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        PolicyBaseViewModel GetPolicyBaseModel(long id);
+        PolicyBaseViewModel GetPolicyBaseModel(string id);
 
         /// <summary>
         /// Gets the quotes.

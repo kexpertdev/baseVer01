@@ -1,7 +1,288 @@
-﻿
+﻿@model KE.Entities.WebViewModels.PolicyBaseViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Policies";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>*@
+
+
+<div class="row">
+
+
+
+    <div class="col-md-9">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#policy" data-toggle="tab">Policy</a></li>
+                <li><a href="#client" data-toggle="tab">Client</a></li>
+                <li><a href="#vehicle" data-toggle="tab">Vehicle</a></li>
+                <li><a href="#claims" data-toggle="tab">Claims</a></li>
+                <li class="pull-right"><a href="#" class="" title="Refresh"><i class="fa fa-refresh"></i></a></li>
+                <li class="dropdown pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Modify policy</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Modify client</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Modify vehicle</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Add new claim</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Smiley :)</a></li>
+                    </ul>
+                </li>
+                <li class="pull-right"><a class="btn btn-default" title="Add remark"><i class="fa fa-plus"></i></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="policy">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-default">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><b>@Html.DisplayFor(m => m.Policy.Product)&nbsp;&nbsp;<i class="fa fa-caret-right"></i>&nbsp;&nbsp;&nbsp;@Html.DisplayFor(m => m.Policy.PolicyNumber)</b></h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" title="Modify">
+                                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                                        </button>
+                                        <b>Created at: @Html.DisplayFor(m => m.Policy.Created)</b>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.box-tools -->
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" style="display: block;">
+                                    <div class="col-md-4 bg-tel-disabled">
+                                        <p><b>Status: @Html.DisplayFor(m => m.Policy.Status)&nbsp;&nbsp;<i class="fa fa-circle text-success"></i></b></p>
+                                        <p><b>Policy Period: @Html.DisplayFor(m => m.Policy.PolicyStartDate) - @Html.DisplayFor(m => m.Policy.PolicyEndDate)</b></p>
+                                        <p><b>Cancelled(from, at): @Html.DisplayFor(m => m.Policy.CancelledFromDate) - @Html.DisplayFor(m => m.Policy.CancelledAtDate)</b></p>
+                                        <p><b>Broker: @Html.DisplayFor(m => m.Policy.Broker)</b></p>
+                                        <p><b>Client: @Html.DisplayFor(m => m.Policy.Client)</b></p>
+                                        <p><b>Vehicle: @Html.DisplayFor(m => m.Policy.Vehicle)</b></p>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"></h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="box-group" id="accordion">
+                                        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                        <div class="panel box box-primary">
+                                            <div class="box-header with-border">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed">
+                                                        <p><b>@Html.DisplayFor(m => m.PolicyPeriod.PeriodNumber).&nbsp;&nbsp;@Html.DisplayFor(m => m.PolicyPeriod.PeriodStartDate) - @Html.DisplayFor(m => m.PolicyPeriod.PeriodEndDate)</b></p>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="true" style="height: 0px;">
+                                                <div class="box-body">
+                                                    <p><b>@Html.LabelFor(m => m.PolicyPeriod.Created): @Html.DisplayFor(m => m.PolicyPeriod.Created)</b></p>
+                                                    <p><b>@Html.LabelFor(m => m.PolicyPeriod.Premium): @Html.DisplayFor(m => m.PolicyPeriod.Premium),&nbsp;&nbsp;&nbsp;@Html.LabelFor(m => m.PolicyPeriod.PaymentMethod):&nbsp;@Html.DisplayFor(m => m.PolicyPeriod.PaymentMethod)</b></p>
+                                                    <p>Installment data...</p>
+                                                    <p>Premium income data...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-primary">
+                                            <div class="box-header with-border">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                                                        <b>Year 2</b>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                                <div class="box-body">
+                                                    Year 2
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel box box-primary">
+                                            <div class="box-header with-border">
+                                                <h4 class="box-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+                                                        <b>Year 3...</b>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false">
+                                                <div class="box-body">
+                                                    Year 3
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="client">
+                    Client data
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="vehicle">
+                   <div class="row">
+                       <div class="col-md-12">
+                           <div class="box box-default">
+                               <div class="box-header with-border">
+                                   <h3 class="box-title"><b>@Html.LabelFor(m => m.Vehicle.PalateNumber): @Html.DisplayFor(m => m.Vehicle.PalateNumber)</b></h3>
+
+                                   <div class="box-tools pull-right">
+                                       <button type="button" class="btn btn-box-tool" title="Modify">
+                                           <i class="fa fa-pencil-square-o fa-2x"></i>
+                                       </button>
+                                       <b>Created at: @Html.DisplayFor(m => m.Policy.Created)</b>
+                                       <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                           <i class="fa fa-minus"></i>
+                                       </button>
+                                   </div>
+                                   <!-- /.box-tools -->
+                               </div>
+                               <!-- /.box-header -->
+                               <div class="box-body" style="display: block;">
+                                   <div class="col-md-4 bg-tel-disabled">
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.Type): @Html.DisplayFor(m => m.Vehicle.Type)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.Usage): @Html.DisplayFor(m => m.Vehicle.Usage)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.VIN): @Html.DisplayFor(m => m.Vehicle.VIN)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.RegistrationCertificateNumber): @Html.DisplayFor(m => m.Vehicle.RegistrationCertificateNumber)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.Make): @Html.DisplayFor(m => m.Vehicle.Make)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.Model): @Html.DisplayFor(m => m.Vehicle.Model)</b></p>
+                                       <p><b>@Html.LabelFor(m => m.Vehicle.Color): @Html.DisplayFor(m => m.Vehicle.Color)</b></p>
+                                   </div>
+                               </div>
+                               <!-- /.box-body -->
+                           </div>
+                           <!-- /.box -->
+                       </div>
+                   </div>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="claims">
+                    Claims data
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+    </div>
+
+
+
+    <div class="col-md-3">
+        <ul class="timeline">
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-aqua">
+                    2015.08.25
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                <i class="fa fa-dot-circle-o bg-green-active"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> 11:05</span>
+                    <h3 class="timeline-header"><a class="btn btn-xs">Now</a></h3>
+                </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-aqua disabled">
+                    2015.01.01
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                <i class="fa fa-arrows-v bg-green"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> 01:05</span>
+                    <h3 class="timeline-header"><a class="btn btn-xs">Policy renewal <i class="fa fa-info-circle"></i></a></h3>
+                    <div class="timeline-body hide">
+                        Popup info for item
+                    </div>
+
+                    @*<div class="timeline-footer">
+                    <a class="btn btn-primary btn-xs"></a>
+                </div>*@
+                </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-aqua disabled">
+                    2014.03.12
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                <i class="fa fa-phone bg-blue"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> 09:45</span>
+                    <h3 class="timeline-header"><a class="btn btn-xs">PhoneCall <i class="fa fa-info-circle"></i></a></h3>
+                    <div class="timeline-body hide">
+                        Popup info for item
+                    </div>
+
+                    @*<div class="timeline-footer">
+                        <a class="btn btn-primary btn-xs"></a>
+                    </div>*@
+                </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-aqua disabled">
+                    2014.01.01
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                <i class="fa fa-chevron-up bg-green"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                    <h3 class="timeline-header"><a class="btn btn-xs">Policy started <i class="fa fa-info-circle"></i></a></h3>
+                    <div class="timeline-body hide">
+                        Popup info for item
+                    </div>
+                    @*<div class="timeline-footer">
+                </div>*@
+                </div>
+            </li>
+            <!-- END timeline item -->
+        </ul>
+    </div>
+   
+
+
+    @*<div class="col-md-2">
+        PhoneCalls....
+    </div>*@
+
+</div>
 

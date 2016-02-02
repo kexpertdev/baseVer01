@@ -69,6 +69,32 @@ namespace KE.DataLayer
                 return _quoteRepo;
             }
         }
+
+        private IGenericRepository<Client> _clientRepo;
+        public IGenericRepository<Client> ClientRepo
+        {
+            get
+            {
+                if (_clientRepo == null)
+                {
+                    _clientRepo = new GenericRepository<Client>((KexpertDb)_context);
+                }
+                return _clientRepo;
+            }
+        }
+
+        private IGenericRepository<Vehicle> _vehicleRepo;
+        public IGenericRepository<Vehicle> VehicleRepo
+        {
+            get
+            {
+                if (_vehicleRepo == null)
+                {
+                    _vehicleRepo = new GenericRepository<Vehicle>((KexpertDb)_context);
+                }
+                return _vehicleRepo;
+            }
+        }
         #endregion
 
         #region Constructors
@@ -84,6 +110,11 @@ namespace KE.DataLayer
         {
             return PolicyRepo.GetAll();
             //return Context.Policy.ToList();
+        }
+
+        public Policy GetPolicyByPolicyNumber(string policyNumber)
+        {
+            return Context.Policy.FirstOrDefault(p => p.PolicyNumber.EndsWith(policyNumber));
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KE.Entities.Emuns;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace KE.Entities.Models
 
         public override string ToString()
         {
-            return "[" + ID + "] " + TaxNumber + " - " + Name + ", " + IsActive.ToString();
+            return String.Format("{0} - {1}, {2}", TaxNumber.ToString(), Name, IsActive ? Status.Active.ToString() : Status.Inactive.ToString());
         }
     }
 }

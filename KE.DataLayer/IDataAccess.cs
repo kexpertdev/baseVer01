@@ -17,6 +17,8 @@ namespace KE.DataLayer
         IGenericRepository<Policy> PolicyRepo { get; }
         IGenericRepository<PolicyPeriod> PolicyPeriodRepo { get; }
         IGenericRepository<PolicyQuote> QuoteRepo { get; }
+        IGenericRepository<Client> ClientRepo { get; }
+        IGenericRepository<Vehicle> VehicleRepo { get; }
 
         int SaveChanges();
 
@@ -25,6 +27,13 @@ namespace KE.DataLayer
         /// </summary>
         /// <returns>IEnumerable<Policy></returns>
         IEnumerable<Policy> GetAllPolicy();
+
+        /// <summary>
+        /// Get policy by policy number.
+        /// </summary>
+        /// <param name="policyNumber">The policy number.</param>
+        /// <returns></returns>
+        Policy GetPolicyByPolicyNumber(string policyNumber);
 
         /// <summary>
         /// Saves the quote.

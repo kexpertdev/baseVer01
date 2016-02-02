@@ -14,5 +14,7 @@ namespace KE.Entities.WebViewModels
     {
         public PolicyDto Policy { get; set; }
         public PolicyPeriodDto PolicyPeriod { get; set; }
+        //public Client Client { get; set; }
+        public VehicleDto Vehicle { get; set; }
     }
 }

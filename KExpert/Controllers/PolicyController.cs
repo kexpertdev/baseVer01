@@ -9,27 +9,23 @@ namespace KExpert.Controllers
 {
     public class PolicyController : Controller
     {
-         private readonly IPolicyService _service;
+        private readonly IPolicyService Service;
 
-        public IPolicyService Service
-        {
-            get
-            {
-                return _service;
-            }
-        }
 
         public PolicyController(IPolicyService service) 
         {
             if (service == null) throw new ArgumentNullException("IPolicyService");
-            _service = service;
+            Service = service;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var model = Service.GetPolicyBaseModel(2);
-
-            return View();
+            if(searchString != null && searchString != String.Empty)
+            {
+                var model = Service.GetPolicyBaseModel(searchString);
+                return View(model);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace KE.BusinessLayer
     public class PolicyService : IPolicyService
     {
         #region Properties
-        private readonly IDataAccess _dataAccess;
+        IDataAccess _dataAccess;
 
         public IDataAccess DataAccess
         {
@@ -23,7 +23,9 @@ namespace KE.BusinessLayer
                 return _dataAccess;
             }
         }
+        #endregion
 
+        #region Constructor
         public PolicyService(IDataAccess dataAccess) 
         {
             if (dataAccess == null) throw new ArgumentNullException("IDataAccess");
@@ -32,15 +34,18 @@ namespace KE.BusinessLayer
         #endregion
 
         #region Methods        
-        public PolicyBaseViewModel GetPolicyBaseModel(long id)
+        public PolicyBaseViewModel GetPolicyBaseModel(string policyNumber)
         {
-            var policy = AutoMapper.Mapper.Map<PolicyDto>(DataAccess.PolicyRepo.GetByID(id));
-            var policyPeriod = policy == null ? null : AutoMapper.Mapper.Map<PolicyPeriodDto>(DataAccess.PolicyPeriodRepo.GetByID(policy.LastPolicyPeriodID));
+            var policy = Mapper.Map<PolicyDto>(DataAccess.GetPolicyByPolicyNumber(policyNumber));
+            //var policyPeriod = policy == null ? null : Mapper.Map<PolicyPeriodDto>(DataAccess.PolicyPeriodRepo.GetByID(policy.LastPolicyPeriod_ID));
+            //var vehicle = Mapper.Map<VehicleDto>(DataAccess.VehicleRepo.GetByID(policy.Vehicle_ID));
 
             return new PolicyBaseViewModel()
             {
                 Policy = policy,
-                PolicyPeriod = policyPeriod
+                PolicyPeriod = policy == null ? null : Mapper.Map<PolicyPeriodDto>(DataAccess.PolicyPeriodRepo.GetByID(policy.LastPolicyPeriod_ID)),
+                //Client = Mapper.Map<ClientDto>(DataAccess.ClientRepo.GetByID(policy.Client_ID)),
+                Vehicle = policy == null ? null : Mapper.Map<VehicleDto>(DataAccess.VehicleRepo.GetByID(policy.Vehicle_ID))
             };
         }
 

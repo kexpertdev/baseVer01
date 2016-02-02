@@ -64,7 +64,7 @@ namespace KE.Entities.DbModels
 
         public override string ToString()
         {
-            return PolicyNumber + " - " + Vehicle.PalateNumber + ", " + Status.Name;
+            return PolicyNumber + " - " + Vehicle.PalateNumber + ", Status = " + Status.Name;
         }
     }
 }
